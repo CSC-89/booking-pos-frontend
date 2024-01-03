@@ -11,11 +11,11 @@ import Home from "./components/Home";
 import DashBoard from "./components/DashBoard";
 
 function App() {
-    const [loginStatus, setLoginStatus] = useState<boolean>(true);
+    const [loginStatus] = useState<boolean>(true);
 
     return (
-        <>
-            <LoginContext.Provider value={loginStatus}>
+        <>  
+            <LoginContext.Provider value={{loginStatus}}>
                 <Router>
                     <Routes>
                         {!loginStatus ? (
@@ -29,7 +29,7 @@ function App() {
                                 element={<Navigate to={"/dashboard"} replace />}
                             />
                         )}
-                        
+
                         <Route path="/home" element={<Home />} />
                         <Route path="/dashboard" element={<DashBoard />} />
                     </Routes>
